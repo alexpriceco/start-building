@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Style from '../components/general/style'
+import Stylesheet from '../components/stylesheet.js'
 import sheet from '../components/base.scss'
 
 export default class Error extends Component {
@@ -13,7 +13,7 @@ export default class Error extends Component {
   render () {
     return (
       <section>
-        <Style sheet={sheet} />
+        <Stylesheet sheet={sheet} />
         Error {this.props.statusCode}
       </section>
     )

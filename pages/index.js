@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import Style from '../components/general/style'
+import Stylesheet from '../components/stylesheet.js'
 import sheet from '../components/base.scss'
 
-import Child from '../components/child'
+import Child from '../components/child/child.js'
 
 import FIREBASE_API_KEY from '../config/firebase-api-key.js'
 import * as firebase from 'firebase'
@@ -26,8 +26,33 @@ export class Index extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      loading: true
+      loading: true,
+      error: '',
+
+      // Data from Firebase
+      someKey: ''
     }
+  }
+
+  componentDidMount () {
+    this.getRootDoc()
+    // this.getRootDoc.then((data) => {
+    //   this.setState({
+    //     loading: false,
+    //     ...data
+    //   })
+    // }).catch((error) => {
+    //   this.setState({
+    //     loading: false,
+    //     error
+    //   })
+    // })
+  }
+
+  async getRootDoc () {
+    const rootCollection = firebase.firestore().collection('triplebyte')
+    const rootDoc = await rootCollection.doc('root').get()
+    return rootDoc.data()
   }
 
   render () {
@@ -35,17 +60,24 @@ export class Index extends Component {
       return (
         <main>
           Just a second...
-          <Style sheet={sheet} />
+          <Stylesheet sheet={sheet} />
+        </main>
+      )
+    } else if (this.state.error) {
+      return (
+        <main>
+          <h1>That's bad. The following error occurred:</h1>
+          <div className='error'>{this.state.error}</div>
+          <Stylesheet sheet={sheet} />
         </main>
       )
     }
+
     return (
       <main>
         <h1>App title</h1>
-
-        <Child />
-
-        <Style sheet={sheet} />
+        <Child someKey={this.state.someKey} />
+        <Stylesheet sheet={sheet} />
       </main>
     )
   }
