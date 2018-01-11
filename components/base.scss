@@ -1,0 +1,86 @@
+@import 'vars';
+@import 'reset';
+@import 'mixins';
+@import 'animations';
+
+body {
+  background: $black;
+  color: $white;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font: 16px/20px $base-font-family;
+  padding: 4em 10vw;
+  font-weight: 400;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+
+  > * { width: 100%; }
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 2.25em;
+  margin-bottom: 0;
+  display: inline-block;
+  span { color: $grey50; }
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4em;
+}
+
+input {
+  @include ease(0.2s);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  background: $grey90;
+  padding: 0.75em 1em;
+  color: $white;
+
+  &:hover {
+    background: $grey80;
+  }
+
+  &:focus {
+    background: $grey70;
+  }
+
+  &.no-field {
+    font-size: 1em;
+    background: none;
+    color: $grey50;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    cursor: ew-resize;
+
+    &:hover {
+      background: none;
+      color: $grey70;
+    }
+
+    &:focus {
+      background: none;
+      color: $white;
+    }
+  }
+}
