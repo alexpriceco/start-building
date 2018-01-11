@@ -16,7 +16,7 @@ A straightforward, forkable project for building a web application.
 
 #### Using Firebase
 If you need access to Firebase data, do the following:
-1. Create an account at [console.firebase.google.com](firebase.google.com)
+1. Create an account at [console.firebase.google.com](https://console.firebase.google.com)
 2. Create a new project. Copy your keys over to `/pages/index.js`. You'll see where to paste this data.
 3. Navigate to the "database" tab, then create a new Firestore db.
 4. Set the read/write rules to "testing" for ease of development
