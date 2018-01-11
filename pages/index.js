@@ -7,6 +7,7 @@ import Child from '../components/child/child.js'
 
 import FIREBASE_API_KEY from '../config/firebase-api-key.js'
 import * as firebase from 'firebase'
+require('firebase/firestore')
 if (!firebase.apps.length) {
   console.log(
     '%cCreating a new firebase instance...',
@@ -30,23 +31,22 @@ export class Index extends Component {
       error: '',
 
       // Data from Firebase
-      someKey: ''
+      data: {}
     }
   }
 
   componentDidMount () {
-    this.getRootDoc()
-    // this.getRootDoc.then((data) => {
-    //   this.setState({
-    //     loading: false,
-    //     ...data
-    //   })
-    // }).catch((error) => {
-    //   this.setState({
-    //     loading: false,
-    //     error
-    //   })
-    // })
+    this.getRootDoc().then((data) => {
+      this.setState({
+        loading: false,
+        data
+      })
+    }).catch((error) => {
+      this.setState({
+        loading: false,
+        error
+      })
+    })
   }
 
   async getRootDoc () {
@@ -76,7 +76,7 @@ export class Index extends Component {
     return (
       <main>
         <h1>App title</h1>
-        <Child someKey={this.state.someKey} />
+        <Child data={this.state.data} />
         <Stylesheet sheet={sheet} />
       </main>
     )

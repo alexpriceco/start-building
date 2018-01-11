@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Stylesheet from '../stylesheet.js'
-import sheet from '../base.scss'
+import sheet from './child.scss'
 
 export class Child extends Component {
   constructor (props, context) {
@@ -11,10 +11,15 @@ export class Child extends Component {
   }
 
   render () {
+    const { data } = this.props
     return (
       <div>
-        Child! {this.props.map((property, n) => {
-          return <p key={n}>property</p>
+        { Object.keys(data).map((key, n) => {
+          return (
+            <p className='row' key={n}>
+              <span>{key}</span>: <span>{data[key]}</span>
+            </p>
+          )
         })}
         <Stylesheet sheet={sheet} />
       </div>
