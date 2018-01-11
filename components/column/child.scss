@@ -1,0 +1,46 @@
+@import '../vars';
+@import '../reset';
+@import '../mixins';
+@import '../animations';
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 125px);
+  box-sizing: border-box;
+
+  & + .column { margin-left: 25px; }
+
+  header {
+    height: 30px;
+    text-align: center;
+    margin-bottom: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 1em;
+      font-weight: 400;
+    }
+  }
+
+  &:nth-of-type(n + 1) .card {
+    padding-right: calc(22px + 1em);
+    padding-left: calc(22px + 1em);
+  }
+
+  &:first-of-type .card {
+    padding-left: 14px;
+  }
+
+  &:nth-of-type(1) header { background: #8e6e95; }
+  &:nth-of-type(2) header { background: #39a59c; }
+  &:nth-of-type(3) header { background: #344759; }
+  &:nth-of-type(4) header { background: #e8741e; }
+
+  .add-a-card {
+    margin-top: 1em;
+    color: $grey50;
+  }
+}

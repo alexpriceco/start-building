@@ -1,0 +1,48 @@
+@import '../vars';
+@import '../reset';
+@import '../mixins';
+@import '../animations';
+
+.card {
+  padding: 14px 0;
+  background: $white;
+  color: rgba($black, 0.75);
+  margin-bottom: 0.5em;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  .moveLeft {
+    padding-top: 0.2em;
+    margin-left: 8px;
+    margin-right: 14px;
+    max-width: calc(22px + 1em);
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    @include translate3d(0, -50%, 0);
+  }
+
+  .moveRight {
+    padding-top: 0.2em;
+    margin-right: 8px;
+    margin-left: 14px;
+    max-width: calc(22px + 1em);
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    @include translate3d(0, -50%, 0);
+  }
+
+  .moveLeft, .moveRight {
+    cursor: pointer;
+    &:hover { opacity: 0.5; }
+  }
+
+  @include box-shadow(0, 2px, 0.25em, 0, rgba($black, 0.1));
+}
