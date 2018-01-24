@@ -5,7 +5,7 @@ import sheet from '../components/base.scss'
 
 import Child from '../components/child/child.js'
 
-import FIREBASE_API_KEY from '../config/firebase-api-key.js'
+import config from '../config/firebase-api-key.js'
 import * as firebase from 'firebase'
 require('firebase/firestore')
 if (!firebase.apps.length) {
@@ -13,12 +13,6 @@ if (!firebase.apps.length) {
     '%cCreating a new firebase instance...',
     'color: grey; font-style: italic'
   )
-
-  let config = {
-    apiKey: FIREBASE_API_KEY,
-    authDomain: 'start-building-n.firebaseapp.com',
-    projectId: 'start-building-n'
-  }
 
   firebase.initializeApp(config)
 }
