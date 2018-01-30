@@ -14,8 +14,8 @@ A straightforward, forkable project for building a web application.
   
   module.exports = config
   ```
-4. Run `yarn run dev`
-5. ???
+4. Run `yarn && yarn dev` in a terminal of your choice
+5. Build something beautiful and useful
 6. Reap the wild profits and popularity of your new project
 
 ### Building things
