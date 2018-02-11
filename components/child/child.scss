@@ -1,12 +1,9 @@
 @import '../vars';
-@import '../reset';
 @import '../mixins';
-@import '../animations';
 
-.row {
-  margin: 0;
-  padding: 1em 0;
-  border-bottom: 1px solid $grey90;
-  span:last-child { color: $fuchsia; }
-  &:first-child { margin-top: 4em; }
+input.styled {
+  margin-top: 1em;
+  color: $white;
+  background: $grey80;
+  padding: 1em;
 }

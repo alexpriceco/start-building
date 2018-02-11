@@ -6,21 +6,25 @@ export class Child extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      // stuff goes here
+      description: this.props.description
     }
   }
 
   render () {
-    const { data } = this.props
+    const { description } = this.state
+
     return (
       <div>
-        { Object.keys(data).map((key, n) => {
-          return (
-            <p className='row' key={n}>
-              <span>{key}</span>: <span>{data[key]}</span>
-            </p>
-          )
-        })}
+        <input
+          className='styled'
+          value={description}
+          onChange={(event) => {
+            this.setState({
+              description: event.target.value
+            })
+          }}
+        />
+
         <Stylesheet sheet={sheet} />
       </div>
     )

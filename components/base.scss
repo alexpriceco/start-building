@@ -18,3 +18,18 @@ body {
 h1, h2, h3, h4 {
   font-weight: 400;
 }
+
+.button {
+  display: inline-flex;
+  margin-top: 1em;
+  padding: 1em;
+  color: $black;
+  background: $fuchsia;
+  @include ease(200ms);
+  cursor: pointer;
+
+  &:hover {
+    color: $white;
+    background: darken($fuchsia, 10%);
+  }
+}
