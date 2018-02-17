@@ -5,17 +5,18 @@ import sheet from '../components/base.scss'
 
 import Child from '../components/child/child.js'
 
-import config from '../config/firebase-api-key.js'
-import * as firebase from 'firebase'
-require('firebase/firestore')
-if (!firebase.apps.length) {
-  console.log(
-    '%cCreating a new firebase instance...',
-    'color: grey; font-style: italic'
-  )
-
-  firebase.initializeApp(config)
-}
+// TODO: Uncomment if you want Firebase
+// import config from '../config/firebase-api-key.js'
+// import * as firebase from 'firebase'
+// require('firebase/firestore')
+// if (!firebase.apps.length) {
+//   console.log(
+//     '%cCreating a new firebase instance...',
+//     'color: grey; font-style: italic'
+//   )
+//
+//   firebase.initializeApp(config)
+// }
 
 export class Index extends Component {
   constructor (props, context) {
@@ -30,24 +31,29 @@ export class Index extends Component {
   }
 
   componentDidMount () {
-    this.getRootDoc().then((data) => {
-      this.setState({
-        loading: false,
-        data
-      })
-    }).catch((error) => {
-      this.setState({
-        loading: false,
-        error
-      })
-    })
+    console.debug('Loaded')
+    this.setState({ loading: false })
+
+  // TODO: uncomment if you want Firebase
+  //   this.getDataFromFirebase().then((data) => {
+  //     this.setState({
+  //       loading: false,
+  //       data
+  //     })
+  //   }).catch((error) => {
+  //     this.setState({
+  //       loading: false,
+  //       error
+  //     })
+  //   })
   }
 
-  async getRootDoc () {
-    const rootCollection = firebase.firestore().collection('triplebyte')
-    const rootDoc = await rootCollection.doc('root').get()
-    return rootDoc.data()
-  }
+  // TODO: uncomment if you want Firebase
+  // async getDataFromFirebase () {
+  //   const rootCollection = firebase.firestore().collection('triplebyte')
+  //   const rootDoc = await rootCollection.doc('root').get()
+  //   return rootDoc.data()
+  // }
 
   render () {
     if (this.state.loading) {

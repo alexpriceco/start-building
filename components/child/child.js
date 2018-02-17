@@ -12,6 +12,7 @@ export class Child extends Component {
 
   render () {
     const { data } = this.props
+    console.debug('Data is ', data)
     return (
       <div>
         { Object.keys(data).map((key, n) => {
